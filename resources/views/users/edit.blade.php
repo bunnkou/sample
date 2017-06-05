@@ -3,47 +3,48 @@
 
 @section('content')
 <div class="col-md-offset-2 col-md-8">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h5>更新个人资料</h5>
-    </div>
-      <div class="panel-body">
-
+  <div class="row">
         @include('shared._errors')
+        <h5>更新您的资料</h5>
+        <hr>
+        <div class="col-md-9">
+          <form method="POST" action="{{ route('users.update', $user->id )}}">
+              {{ method_field('PATCH') }}
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label for="name">名称：</label>
+                <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+              </div>
 
-        <div class="gravatar_edit">
-          <a href="http://gravatar.com/emails" target="_blank">
-            <img src="{{ $user->gravatar('200') }}" alt="{{ $user->name }}" class="gravatar"/>
-          </a>
+              <div class="form-group">
+                <label for="email">邮箱：</label>
+                <input type="text" name="email" class="form-control" value="{{ $user->email }}" disabled>
+              </div>
+
+              <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" name="password" class="form-control" value="{{ old('password') }}">
+              </div>
+
+              <div class="form-group">
+                <label for="password_confirmation">确认密码：</label>
+                <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
+              </div>
+
+              <button type="submit" class="btn btn-primary">更新</button>
+          </form>
         </div>
-
-        <form method="POST" action="{{ route('users.update', $user->id )}}">
-            {{ method_field('PATCH') }}
-            {{ csrf_field() }}
-
-            <div class="form-group">
-              <label for="name">名称：</label>
-              <input type="text" name="name" class="form-control" value="{{ $user->name }}">
-            </div>
-
-            <div class="form-group">
-              <label for="email">邮箱：</label>
-              <input type="text" name="email" class="form-control" value="{{ $user->email }}" disabled>
-            </div>
-
-            <div class="form-group">
-              <label for="password">密码：</label>
-              <input type="password" name="password" class="form-control" value="{{ old('password') }}">
-            </div>
-
-            <div class="form-group">
-              <label for="password_confirmation">确认密码：</label>
-              <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
-            </div>
-
-            <button type="submit" class="btn btn-primary">更新</button>
-        </form>
-    </div>
-  </div>
+        <div class="col-md-3">
+          <div class="gravatar_edit">
+            <a href="http://gravatar.com/emails" target="_blank">
+              <img src="{{ $user->gravatar('200') }}" alt="{{ $user->name }}" class="gravatar"/>
+            </a>
+          </div>
+          <div style="margin-top:20px; text-align:center;">
+            <a role="button" name="button" class="btn btn-success" href="{{ route('avatar') }}">上传新的头像</a>
+          </div>
+        </div>
+      </div>
+ </div>
 </div>
 @stop
