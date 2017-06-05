@@ -1,5 +1,4 @@
 1. framework & tools<br>
-Ubuntu<br>
 Laravel<br>
 Yarn<br>
 Mysql<br>
@@ -9,12 +8,13 @@ Chrome<br>
 2. front-end<br>
 Bootstrap<br>
 Gulp.js<br>
+sass<br>
 jquery<br>
 
 功能<br>
-1. 用户注册，登录，登出
+1. 用户注册，登录，登出验证
 2. 用户信息编辑，更新，搜索，删除
-3. 密码修改，邮件验证
+3. 密码重置及邮件验证
 4. 创建，修改，删除微博
 5. 用户相互关注，取消关注
 6. 使用 Faker/factory 创建模拟数据
