@@ -1,9 +1,24 @@
-1. user signup, login and logout
-2. user edit, update, index and destroy
-3. send email activation
-4. password resets & email configuration
-5. create, destroy and show posts
-6. use Faker\Factory to create users & posts
+1. framework & tools<br>
+Ubuntu<br>
+Laravel<br>
+Yarn<br>
+Mysql<br>
+Atom<br>
+Chrome<br>
+
+2. front-end<br>
+Bootstrap<br>
+Gulp.js<br>
+jquery<br>
+
+功能<br>
+1. 用户注册，登录，登出
+2. 用户信息编辑，更新，搜索，删除
+3. 密码修改，邮件验证
+4. 创建，修改，删除微博
+5. 用户相互关注，取消关注
+6. 使用 Faker/factory 创建模拟数据
+7. 权限管理，包括查看页面，编辑个人信息，删除微博等
 
 迁移项目:
 1. 从github克隆项目代码：
