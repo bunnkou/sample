@@ -48,6 +48,19 @@ return [
             'root'   => storage_path('app'),
         ],
 
+        // 本地端的public空间
+        'public' => [
+                'driver' => 'local',
+                'root' => storage_path('app/public'),
+                'visibility' => 'public',
+        ],
+
+        'avatars' => [
+            'driver' => 'local',
+            // 文件将上传到storage/app/uploads目录
+            'root' => storage_path('app/public/avatars'),
+        ],
+
         'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',

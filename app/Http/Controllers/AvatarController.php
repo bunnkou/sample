@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-use File;
+use Image;
 use Auth;
-use Input;
 use App\Models\User;
 
 class AvatarController extends Controller
@@ -21,20 +19,25 @@ class AvatarController extends Controller
 
     public function store(Request $request)
     {
-        $destinationPath = 'uploads/';
-        // $file = $request->file('avatar');
-        $file = Input::except('_token', 'avatar');
-        dd($file);
-        $file_name = Auth::user()->id .' '. time() . $file->getClientOriginalName();
-        if (!File::Exists($destinationPath)){
-            File::makeDirectory($destinationPath, 0755, true);
+        // 更新用户头像
+        $user_id = Auth::user()->id;
+        $bool = false;
+        $destinationPath  = "avatars/";
+        $file = $request->file('avatar');
+        if ($file->isValid()){
+            $file_name = $user_id . '_' .time() . $file->getClientOriginalName();
+            $bool = $file->move($destinationPath, $file_name);
+            // 裁剪图片 生成 200x200 缩略图
+            $img = Image::make($destinationPath . $file_name)
+                ->resize(200,200)
+                ->save();
         }
-        $file->move($destinationPath, $file_name);
-
-        $user = User::findOrFail(Auth::user()->id);
-        $user->avatar = '/' . $destinationPath . $file_name;
-        $user->save();
-
-        return view('users.avatar');
+        if ($bool){
+            $user = User::findOrFail($user_id);
+            $data = [];
+            $data['avatar'] = '/' . $destinationPath . $file_name;
+            $user->update($data);
+        }
+        return view('users.edit', compact('user'));
     }
 }

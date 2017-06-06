@@ -36,15 +36,21 @@
         </div>
         <div class="col-md-3">
           <div class="gravatar_edit">
-            <a href="http://gravatar.com/emails" target="_blank">
-              <img src="{{ $user->gravatar('200') }}" alt="{{ $user->name }}" class="gravatar"/>
-            </a>
+              <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="gravatar"/>
           </div>
           <div style="margin-top:20px; text-align:center;">
-            <a role="button" name="button" class="btn btn-success" href="{{ route('avatar') }}">上传新的头像</a>
+            <button name="button" data-toggle="modal" data-target="#modal-avatar-edit" class="btn btn-success">上传新的头像</button>
           </div>
         </div>
       </div>
  </div>
 </div>
+
+@include('users._modals_avatar')
+@stop
+
+@section('scripts')
+<script>
+
+</script>
 @stop
