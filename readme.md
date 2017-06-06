@@ -20,6 +20,9 @@ jquery<br>
 6. 使用 Faker/factory 创建模拟数据
 7. 权限管理，包括查看页面，编辑个人信息，删除微博等
 
+170606: <br>
+1. 添加了头像上传功能，并使用 Intervention Image 对上传照片进行压缩
+
 迁移项目:
 1. 从github克隆项目代码：
 git clone git@github.com:bunnkou/sample.git
